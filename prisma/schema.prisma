@@ -1,0 +1,37 @@
+// Configuração para SQLite (desenvolvimento local)
+// Para PRODUÇÃO, mude para "postgresql"
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Game {
+  id            String    @id @default(uuid())
+  title         String    @unique
+  description   String?
+  image         String?
+  thumbnail     String?
+  platform      String    // Epic, Steam, GOG, Itch.io, etc
+  priceOriginal Float     @default(0)
+  priceCurrent  Float     @default(0)
+  url           String    // URL original (será interceptado para afiliado)
+  endDate       DateTime? // Quando a oferta acaba
+  isHot         Boolean   @default(false) // Destaque na home
+  status        String    @default("Active") // Active, Expired
+  externalId    String?   @unique // ID da API externa para evitar duplicatas
+  worth         String?   // Valor original como string (ex: "$59.99")
+  instructions  String?   // Como pegar o jogo
+  type          String    @default("Game") // Game, DLC, Loot, Item
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  @@index([endDate])
+  @@index([status])
+  @@index([createdAt])
+  @@index([isHot])
+  @@index([type])
+}
