@@ -1,0 +1,17 @@
+name: Sync Free Games
+
+on:
+  schedule:
+    # Executar a cada 4 horas (6x por dia)
+    - cron: '0 */4 * * *'
+  workflow_dispatch: # Permite executar manualmente
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger sync endpoint
+        run: |
+          curl -X POST "${{ secrets.VERCEL_URL }}/api/cron/sync" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            -H "Content-Type: application/json"
