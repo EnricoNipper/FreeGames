@@ -12,6 +12,20 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Garantir que ads.txt seja servido corretamente
+  async headers() {
+    return [
+      {
+        source: '/ads.txt',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/plain',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
