@@ -1,7 +1,6 @@
-// Configuração para SQLite (desenvolvimento local)
-// Para PRODUÇÃO, mude para "postgresql"
+// Configuração para PostgreSQL (produção)
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
