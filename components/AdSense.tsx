@@ -17,20 +17,25 @@ export function AdSense({
 }: AdSenseProps) {
   useEffect(() => {
     try {
-
+      console.log('🔵 AdSense: Tentando carregar anúncio', { slot, format });
       // @ts-ignore
       (window.adsbygoogle = window.adsbygoogle || []).push({});
+      console.log('✅ AdSense: Push executado com sucesso');
     } catch (err) {
-      console.error('AdSense error:', err);
+      console.error('❌ AdSense error:', err);
     }
-  }, []);
+  }, [slot, format]);
 
   return (
     <div className={`adsense-wrapper ${className}`}>
+      {/* Debug info */}
+      <div className="text-xs text-gray-400 mb-1">
+        📢 AdSense
+      </div>
       <ins
         className="adsbygoogle"
-        style={{ display: 'block' }}
-        data-ad-client={process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID}
+        style={{ display: 'block', minHeight: '100px', background: '#f0f0f0' }}
+        data-ad-client="ca-pub-6749640246497731"
         data-ad-slot={slot}
         data-ad-format={format}
         data-full-width-responsive={responsive.toString()}
