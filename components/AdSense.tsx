@@ -17,6 +17,7 @@ export function AdSense({
 }: AdSenseProps) {
   useEffect(() => {
     try {
+
       // @ts-ignore
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch (err) {
@@ -42,8 +43,8 @@ export function AdSense({
 export function AdSenseBannerTop() {
   return (
     <AdSense 
-      slot="YOUR_SLOT_ID_1" 
-      format="horizontal"
+      slot="1545669198" 
+      format="auto"
       className="mb-6"
     />
   );
@@ -52,7 +53,7 @@ export function AdSenseBannerTop() {
 export function AdSenseRectangle() {
   return (
     <AdSense 
-      slot="YOUR_SLOT_ID_2" 
+      slot="6618467249" 
       format="rectangle"
       responsive={false}
       className="my-6"
@@ -63,9 +64,22 @@ export function AdSenseRectangle() {
 export function AdSenseInFeed() {
   return (
     <AdSense 
-      slot="YOUR_SLOT_ID_3" 
+      slot="1545669198" 
       format="auto"
       className="my-8"
     />
+  );
+}
+
+export function AdSenseSidebar() {
+  return (
+    <div className="sticky top-4">
+      <AdSense 
+        slot="1545669198" 
+        format="vertical"
+        responsive={false}
+        className="mb-6"
+      />
+    </div>
   );
 }

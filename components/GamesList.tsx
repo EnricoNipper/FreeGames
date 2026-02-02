@@ -64,7 +64,7 @@ export function GamesList() {
         onSelect={setSelectedType} 
       />
 
-      <section id="jogos" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <section id="jogos" className="py-12">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20">
             <Loader2 className="w-12 h-12 animate-spin text-blue-600 mb-4" />
